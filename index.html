@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- BASIC -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Trevora – Student Productivity App</title>
+    <meta name="description" content="Trevora is an all-in-one student productivity app with Pomodoro timer, to-do list, flashcards, quiz system, and study analytics." />
+    <meta name="keywords" content="student app, productivity, pomodoro, flashcards, quiz app, study planner, todo list" />
+    <meta name="author" content="Trevora" />
+
+    <!-- THEME -->
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- FAVICON -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- OPEN GRAPH (Facebook, Discord, WhatsApp, etc.) -->
+    <meta property="og:title" content="Trevora – Student Productivity App" />
+    <meta property="og:description" content="Boost your study with Pomodoro, flashcards, quizzes, and task tracking in one place." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://whois65.github.io/trevora" />
+    <meta property="og:image" content="images/preview.png" />
+
+    <!-- TWITTER (X) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Trevora – Student Productivity App" />
+    <meta name="twitter:description" content="Study smarter with Pomodoro, flashcards, and quizzes." />
+    <meta name="twitter:image" content="images/preview.png" />
+
+    <!-- PWA / MOBILE -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Trevora" />
+
+    <!-- ICON (iOS) -->
+    <link rel="apple-touch-icon" href="/icon.png" />
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <div class="logo">Tre<span>vora</span></div>
+
+        <div class="nav-item active" data-section="home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Home
+        </div>
+        <div class="nav-item" data-section="schedule">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Schedule
+        </div>
+        <div class="nav-item" data-section="todo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <polyline points="9 11 12 14 22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+            To-Do List
+        </div>
+        <div class="nav-item" data-section="flashcards">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+            </svg>
+            Flashcards
+        </div>
+        <div class="nav-item" data-section="quiz">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            Quiz
+        </div>
+        <div class="nav-item" data-section="statistics">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+            Statistics
+        </div>
+        <div class="sidebar-spacer"></div>
+        <div class="nav-item" data-section="settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path
+                    d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                <circle cx="12" cy="12" r="3" />
+            </svg>
+            Settings
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- ═══════════ HOME ═══════════ -->
+        <section id="home" class="section active">
+            <div>
+                <div style="font-size:12px;color:var(--muted)" id="homeDate"></div>
+                <div class="home-time" id="homeClock">--:--:--</div>
+                <div style="font-size:14px;color:var(--muted)" id="homeGreeting"></div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-label">Weather</div>
+                    <div class="card-value" id="hwTemp">--°</div>
+                    <div class="card-sub" id="hwDesc">Loading…</div>
+                    <div style="font-size:11px;color:var(--muted);margin-top:6px" id="hwCity">–</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">Tasks today</div>
+                    <div class="card-value" id="hTaskCount">0</div>
+                    <div class="card-sub" id="hTaskDone">0 completed</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-label">Pomodoro sessions</div>
+                    <div class="card-value" id="hPomCount">0</div>
+                    <div class="card-sub">today</div>
+                </div>
+            </div>
+
+            <!-- Pomodoro widget -->
+            <div class="card" style="max-width:300px">
+                <div class="subt1">Pomodoro Timer</div>
+                <div class="pom-ring">
+                    <svg width="140" height="140" viewBox="0 0 140 140">
+                        <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border)" stroke-width="8" />
+                        <circle id="pomCircle" cx="70" cy="70" r="58" fill="none" stroke="var(--accent)"
+                            stroke-width="8" stroke-linecap="round" transform="rotate(-90 70 70)"
+                            stroke-dasharray="364.4" stroke-dashoffset="0" />
+                    </svg>
+                    <div class="pom-ui">
+                        <div class="pom-time" id="pomTimer">25:00</div>
+                        <div style="font-size:11px;color:var(--muted)" id="pomMode">Focus</div>
+                        <button class="pom-btn" id="pomBtn">▶</button>
+                    </div>
+                </div>
+                <div class="pom-controls">
+                    <button class="btn btn-ghost btn-sm" id="pomReset">Reset</button>
+                    <button class="btn btn-ghost btn-sm setModeBtn" data-set="focus">Focus</button>
+                    <button class="btn btn-ghost btn-sm setModeBtn" data-set="short">Short</button>
+                    <button class="btn btn-ghost btn-sm setModeBtn" data-set="long">Long</button>
+                </div>
+            </div>
+
+            <!-- Quick To-Do -->
+            <div class="card">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                    <div style="font-size:13px;font-weight:500">Quick Tasks</div>
+                    <button class="btn btn-primary btn-sm" id="addTaskBtn">+ Add</button>
+                </div>
+                <div class="todo-list" id="homeTodoList"></div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SCHEDULE ═══════════ -->
+        <section id="schedule" class="section">
+            <div class="page-header">
+                <div>
+                    <div class="page-title">Schedule</div>
+                    <div class="page-sub">Manage your daily timetable</div>
+                </div>
+                <button class="btn btn-primary" id="addEventBtn">+ Add Event</button>
+            </div>
+
+            <div class="card">
+                <div id="scheduleGrid" class="schedule-grid">
+                    <div class="empty-state">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                        </svg>
+                        <div class="empty-title">No events yet</div>
+                        <div>Add your first scheduled event above.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ TO-DO ═══════════ -->
+        <section id="todo" class="section">
+            <div class="page-header">
+                <div>
+                    <div class="page-title">To-Do List</div>
+                    <div class="page-sub" id="todoSub">0 tasks</div>
+                </div>
+                <button class="btn btn-primary" id="addTodoBtn">+ Add Task</button>
+            </div>
+
+            <div class="card">
+                <div class="chip-row" id="todoFilter">
+                    <button class="chip active" data-set="all">All</button>
+                    <button class="chip" data-set="active">Active</button>
+                    <button class="chip" data-set="done">Completed</button>
+                </div>
+                <div class="todo-list" id="todoList"></div>
+            </div>
+        </section>
+
+        <!-- ═══════════ FLASHCARDS ═══════════ -->
+        <section id="flashcards" class="section">
+            <div id="fcDeckView">
+                <div class="page-header" style="margin-bottom:22px">
+                    <div>
+                        <div class="page-title">Flashcards</div>
+                        <div class="page-sub">Your study decks</div>
+                    </div>
+                    <button class="btn btn-primary" id="addDeck">+ New Deck</button>
+                </div>
+                <div id="deckList" class="deck-list"></div>
+            </div>
+
+            <div id="fcStudyView" style="display:none">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+                    <button class="btn btn-ghost btn-sm" id="back-show-decklist">← Back</button>
+                    <div>
+                        <div class="page-title" id="fcStudyTitle">Deck</div>
+                        <div class="page-sub" id="fcStudySubtitle"></div>
+                    </div>
+                </div>
+
+                <div class="flashcard-scene" id="flipBtn">
+                    <div class="flashcard-inner" id="fcInner">
+                        <div class="flashcard-face front">
+                            <div class="fc-label">Question</div>
+                            <div class="fc-text" id="fcFront">–</div>
+                            <div class="fc-hint">Click to reveal answer</div>
+                        </div>
+                        <div class="flashcard-face back">
+                            <div class="fc-label">Answer</div>
+                            <div class="fc-text" id="fcBack">–</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fc-nav">
+                    <button class="btn btn-ghost btn-sm" id="fcPrevBtn">← Prev</button>
+                    <span class="fc-progress" id="fcProgress">1 / 1</span>
+                    <button class="btn btn-ghost btn-sm" id="fcNextBtn">Next →</button>
+                </div>
+                <div class="fc-dot-row" id="fcDots"></div>
+
+                <div style="display:flex;gap:10px;margin-top:20px;justify-content:center">
+                    <button class="btn btn-primary btn-sm" id="fcShuffleBtn">Shuffle</button>
+                    <button class="btn btn-ghost btn-sm" id="AddCardBtn">+ Add Card</button>
+                    <button class="btn btn-danger btn-sm" id="deleteDeckBtn">Delete Deck</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ QUIZ ═══════════ -->
+        <section id="quiz" class="section">
+            <div id="quizSetup">
+                <div class="page-header" style="margin-bottom:22px">
+                    <div>
+                        <div class="page-title">Quiz</div>
+                        <div class="page-sub">Test your knowledge</div>
+                    </div>
+                </div>
+                <div class="card" style="max-width:480px">
+                    <div class="form-group" style="margin-bottom:14px">
+                        <label>Select deck</label>
+                        <select id="quizDeckSelect"></select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:14px">
+                        <label>Number of questions</label>
+                        <input type="number" id="quizCount" value="5" min="1" max="20">
+                    </div>
+                    <button class="btn btn-primary" id="startQuizBtn">Start Quiz</button>
+                </div>
+            </div>
+
+            <div id="quizPlay" style="display:none;max-width:560px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+                    <span style="font-size:13px;color:var(--muted)" id="quizHeader">Question 1 of 5</span>
+                    <button class="btn btn-ghost btn-sm" id="endQuizBtn">Quit</button>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizBar" style="width:0%"></div>
+                </div>
+                <div class="card">
+                    <div class="quiz-q" id="quizQuestion">–</div>
+                    <div id="quizOptions"></div>
+                    <div id="quizFeedback" style="font-size:13px;color:var(--muted);margin-top:12px"></div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;margin-top:14px">
+                    <button class="btn btn-primary" id="quizNextBtn" style="display:none">Next
+                        →</button>
+                </div>
+            </div>
+
+            <div id="quizResult" style="display:none;max-width:480px">
+                <div class="page-title" style="margin-bottom:20px">Quiz Complete!</div>
+                <div class="card" style="align-items:center;text-align:center">
+                    <div class="quiz-score-ring" style="width:120px;height:120px;margin-bottom:16px">
+                        <svg width="120" height="120" viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="8" />
+                            <circle id="quizScoreCircle" cx="60" cy="60" r="50" fill="none" stroke="var(--success)"
+                                stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)"
+                                stroke-dasharray="314.16" stroke-dashoffset="314.16" />
+                        </svg>
+                        <div class="quiz-score-num" id="quizScoreNum">–</div>
+                    </div>
+                    <div style="font-size:15px;font-weight:500" id="quizResultMsg">–</div>
+                    <div style="font-size:13px;color:var(--muted);margin-top:6px" id="quizResultDetail">–</div>
+                    <div style="display:flex;gap:10px;margin-top:20px;justify-content:center">
+                        <button class="btn btn-primary" id="quiz-try-again">Try Again</button>
+                        <button class="btn btn-ghost" id="btn-ghost-review">Review Cards</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ STATISTICS ═══════════ -->
+        <section id="statistics" class="section">
+            <div class="page-header">
+                <div class="page-title">Statistics</div>
+                <div class="page-sub">Your study overview</div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-label">Total Pomodoros</div>
+                    <div class="card-value" id="statTotalPom">0</div>
+                    <div class="card-sub" id="statPomTime">0 hours focused</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Tasks completed</div>
+                    <div class="card-value" id="statTaskDone">0</div>
+                    <div class="card-sub" id="statTaskTotal">of 0 total</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Cards reviewed</div>
+                    <div class="card-value" id="statCardsRev">0</div>
+                    <div class="card-sub">all time</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Quizzes taken</div>
+                    <div class="card-value" id="statQuizzes">0</div>
+                    <div class="card-sub" id="statQuizAvg">avg score –</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="subt1">Deck progress</div>
+                <div class="stat-bar-row" id="deckProgressBars">
+                    <div class="empty-state" style="padding:20px">No decks yet.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="subt1">Last 14 days</div>
+                <div class="streak-row" id="streakRow"></div>
+            </div>
+
+            <div style="display:flex;justify-content:flex-end">
+                <button class="btn btn-danger btn-sm" id="resetStatBtn">Reset stats</button>
+            </div>
+        </section>
+
+        <!-- ═══════════ SETTINGS ═══════════ -->
+        <section id="settings" class="section">
+            <div class="page-title" style="margin-bottom:4px">Settings</div>
+
+            <div class="card">
+                <div class="settings-section">
+                    <div class="t1">
+                        Profile</div>
+                    <div class="form-group" style="margin-bottom:12px">
+                        <label>Your name</label>
+                        <input type="text" id="setName" placeholder="e.g. Alex">
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="t1">
+                        Weather</div>
+                    <div class="form-group" style="margin-bottom:12px">
+                        <label>City</label>
+                        <input type="text" id="setCity" placeholder="e.g. London">
+                    </div>
+                    <div class="form-group">
+                        <label>Units</label>
+                        <select id="setUnits">
+                            <option value="metric">Celsius (°C)</option>
+                            <option value="imperial">Fahrenheit (°F)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="t1">
+                        Pomodoro</div>
+                    <div class="form-group" style="margin-bottom:12px">
+                        <label>Focus duration (minutes)</label>
+                        <input type="number" id="setPomFocus" value="25" min="1" max="60">
+                    </div>
+                    <div class="form-group" style="margin-bottom:12px">
+                        <label>Short break (minutes)</label>
+                        <input type="number" id="setPomShort" value="5" min="1" max="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Long break (minutes)</label>
+                        <input type="number" id="setPomLong" value="15" min="1" max="60">
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="t1">
+                        Notifications</div>
+                    <div class="settings-row">
+                        <div>
+                            <div class="settings-label">Sound alerts</div>
+                            <div class="settings-sublabel">Beep when Pomodoro ends</div>
+                        </div>
+                        <label class="toggle"><input type="checkbox" id="setSoundOn"
+                                checked><spanclass="toggle-slider"></span></label>
+                    </div>
+                </div>
+
+                <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px">
+                    <button class="btn btn-ghost" id="cancelSettings">Cancel</button>
+                    <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modalContainer"></div>
+    <audio id="beepSound" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
